@@ -1,114 +1,129 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Section } from "@/app/components/ui/LayoutComponents";
-import { Card } from "@/app/components/ui/Card";
-import { ExternalLink, Github } from "lucide-react";
-import Image from "next/image";
+import { Github, Globe, Activity, Atom, Database, Server, Triangle, Wind, FileType, Cpu } from "lucide-react";
+import Link from "next/link";
+
+// Helper to get icon by name (simplified for light theme)
+const getTechIcon = (tech: string) => {
+    const className = "w-5 h-5 text-gray-700";
+    switch (tech.toLowerCase()) {
+        case "react": return <Atom className={className} />;
+        case "node.js": return <Server className={className} />;
+        case "express": return <Server className={className} />;
+        case "mongodb": return <Database className={className} />;
+        case "tailwind": return <Wind className={className} />;
+        case "prisma": return <Triangle className={className} />;
+        case "typescript": return <FileType className={className} />;
+        case "next.js": return <Cpu className={className} />;
+        default: return <Activity className={className} />;
+    }
+};
 
 const projects = [
     {
-        title: "FitMind AI",
-        category: "AI & Mental Health",
-        description: "Award-winning mental health platform with real-time AI voice agent for cognitive support.",
-        tech: ["Next.js", "Gemini 2.0", "Vapi AI", "TypeScript"],
-        color: "bg-indigo-50",
-        link: "#",
-        github: "#"
+        title: "Lunar",
+        description: "An music streaming web application with features like song search, playlist creation, and seamless audio playback.",
+        tech: ["React", "MongoDB", "Express", "Node.js", "Tailwind"],
+        liveUrl: "#",
+        githubUrl: "#",
+        status: "All Systems Operational",
+        color: "bg-purple-100" // Light theme accent
     },
     {
-        title: "Gameonix Esports",
-        category: "Gaming Platform",
-        description: "Scalable crowdfunding and esports platform with high-performance frontend architecture.",
-        tech: ["Next.js", "Tailwind CSS", "Redux"],
-        color: "bg-orange-50",
-        link: "#",
-        github: "#"
-    },
-    {
-        title: "Gametosa",
-        category: "E-Commerce",
-        description: "Responsive React application with reusable components and efficient state management.",
-        tech: ["React.js", "TypeScript", "Material UI"],
-        color: "bg-blue-50",
-        link: "#",
-        github: "#"
-    },
-    {
-        title: "Cognifyz",
-        category: "Web Application",
-        description: "Dynamic web solution with secure authentication and REST API integration.",
-        tech: ["React", "Node.js", "MongoDB"],
-        color: "bg-green-50",
-        link: "#",
-        github: "#"
+        title: "AuthX",
+        description: "A complete MERN stack authentication system with secure user registration, login, and session management.",
+        tech: ["React", "MongoDB", "Express", "Node.js", "Tailwind", "Prisma"],
+        liveUrl: "#",
+        githubUrl: "#",
+        status: "All Systems Operational",
+        color: "bg-blue-100"
     }
 ];
 
 export function Projects() {
     return (
-        <Section id="projects">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div>
-                    <h2 className="text-sm font-semibold text-accent tracking-widest uppercase mb-2">Selected Work</h2>
-                    <h3 className="text-3xl font-display font-semibold text-gray-900">
-                        Digital craftsmanship.
-                    </h3>
+        <section id="projects" className="py-24 bg-white text-gray-900">
+            <div className="w-full max-w-5xl mx-auto px-4 md:px-6">
+
+                {/* Header */}
+                <div className="text-center mb-20">
+                    <span className="text-gray-500 text-sm font-medium tracking-wider uppercase mb-2 block">Featured</span>
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4">Projects</h2>
+                    {/* Divider line style from reference? No, reference has "Featured Projects" centered. */}
                 </div>
-                <a href="https://github.com/rimanshupatel" target="_blank" className="text-sm font-medium text-gray-900 border-b border-gray-200 pb-1 hover:text-accent hover:border-accent transition-colors">
-                    View all repositories
-                </a>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                {projects.map((project, index) => (
-                    <motion.div
-                        key={project.title}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className="group"
-                    >
-                        <Card className="h-full p-4 hover:border-accent/40 bg-white/50 backdrop-blur-sm transition-all duration-300">
-                            {/* Reduced padding wrapper */}
-                            <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-gray-100 mb-5">
-                                <div className={`absolute inset-0 ${project.color} opacity-40 group-hover:scale-105 transition-transform duration-700 ease-out`} />
-                                {/* Placeholder for image */}
-                                <div className="absolute inset-0 flex items-center justify-center text-gray-400 group-hover:opacity-75 transition-opacity">
-                                    <span className="font-display font-medium text-lg opacity-30">{project.title}</span>
-                                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    {projects.map((project, index) => (
+                        <motion.div
+                            key={project.title}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.2 }}
+                            className="flex flex-col gap-4"
+                        >
+                            {/* Card Container similar to reference but light */}
+                            <div className="group relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 bg-gray-50">
+                                {/* Background Gradient/Image Placeholder */}
+                                <div className={`absolute inset-0 ${project.color} opacity-50 group-hover:opacity-60 transition-opacity`} />
 
-                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                                    <a href={project.link} className="p-2.5 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform">
-                                        <ExternalLink size={18} />
-                                    </a>
-                                    <a href={project.github} className="p-2.5 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform">
-                                        <Github size={18} />
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div className="flex justify-between items-start mb-2">
-                                    <div>
-                                        <span className="text-[10px] font-bold text-accent uppercase tracking-wider mb-1 block">{project.category}</span>
-                                        <h4 className="text-xl font-bold text-gray-900 group-hover:text-accent transition-colors">{project.title}</h4>
+                                {/* Mock UI in the card */}
+                                <div className="absolute inset-4 md:inset-8 mt-8 md:mt-12 bg-white rounded-t-xl shadow-lg border border-gray-100 overflow-hidden">
+                                    <div className="w-full h-8 bg-gray-50 border-b border-gray-100 flex items-center px-4 gap-2">
+                                        <div className="w-2 h-2 rounded-full bg-red-400" />
+                                        <div className="w-2 h-2 rounded-full bg-yellow-400" />
+                                        <div className="w-2 h-2 rounded-full bg-green-400" />
+                                    </div>
+                                    {/* Content Body Placeholder */}
+                                    <div className="p-4">
+                                        <div className="w-1/3 h-4 bg-gray-100 rounded mb-2" />
+                                        <div className="w-1/2 h-4 bg-gray-100 rounded mb-4" />
+                                        <div className="w-full h-24 bg-gray-50 rounded" />
                                     </div>
                                 </div>
-                                <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">{project.description}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {project.tech.map((tag) => (
-                                        <span key={tag} className="px-2 py-1 bg-gray-50 border border-gray-100 text-gray-500 text-[10px] rounded-full font-medium">
-                                            {tag}
-                                        </span>
+                            </div>
+
+                            {/* Info Below Card (Reference style) */}
+                            <div className="flex flex-col gap-3 px-1">
+                                <div className="flex items-center justify-between">
+                                    <h3 className="text-xl font-bold text-gray-900">{project.title}</h3>
+                                    <div className="flex items-center gap-3 text-gray-400">
+                                        <Link href={project.githubUrl} className="hover:text-gray-900 transition-colors"><Github size={20} /></Link>
+                                        <Link href={project.liveUrl} className="hover:text-gray-900 transition-colors"><Globe size={20} /></Link>
+                                    </div>
+                                </div>
+
+                                <p className="text-gray-500 leading-relaxed text-sm">
+                                    {project.description}
+                                </p>
+
+                                {/* Tech Icons Row */}
+                                <div className="flex items-center gap-3 mt-2">
+                                    {project.tech.map(t => (
+                                        <div key={t} title={t}>
+                                            {getTechIcon(t)}
+                                        </div>
                                     ))}
                                 </div>
+
+                                {/* Status Pill */}
+                                <div className="flex items-center gap-2 mt-4">
+                                    <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-medium">
+                                        <span className="relative flex h-2 w-2">
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                        </span>
+                                        {project.status}
+                                    </span>
+                                </div>
                             </div>
-                        </Card>
-                    </motion.div>
-                ))}
+
+                        </motion.div>
+                    ))}
+                </div>
+
             </div>
-        </Section>
+        </section>
     );
 }
