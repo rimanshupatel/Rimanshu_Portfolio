@@ -4,6 +4,11 @@
 :root {
   --foreground: #111827;
   --background: #FCFCFC;
+  --stripe-color: #f3f4f6;
+}
+
+.bg-background {
+  background-color: var(--background);
 }
 
 html {
