@@ -1,69 +1,84 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Section } from "@/app/components/ui/LayoutComponents";
 import {
-    FileJson, // JSON/JS placeholder
-    FileType, // TS placeholder
-    Atom, // React placeholder
-    Server, // Node/Express placeholder
-    Database, // DB placeholder
-    Wind, // Tailwind placeholder
-    Triangle, // Prisma/Vercel placeholder
-    Cpu // System/Other
-} from "lucide-react";
-// In a real scenario, we would use SVGs or specific icon components for brands like Next.js, TypeScript, etc.
-// For now, I will use text or generic icons if brand icons aren't available in Lucide, 
-// OR better yet, I will use some standard SVG paths or just Lucide placeholders if requested "use lucide react".
-// The user said "use lucide react" for social links. For tech stack, they just said "tech stacks separate section".
-// I'll try to use text labels or see if I can use simple text/emoji or Lucide approximations. 
-// Actually, for "Exact same like that", I should probably use SVGs if possible or just Lucide + Text.
-// Given strict "only lucide react" constraint or similar? User said "link mail, x, github, linkedin use lucide react".
-// For tech stack, I will use Lucide icons where possible + Text labels or just clean SVGs if I had them.
-// I'll stick to a clean row of named icons using Lucide where appropriate or generic icons.
-// Actually, I can use simple text badges or available icons.
-// Let's use a marquee or simple flex wrap.
+    SiReact,
+    SiNextdotjs,
+    SiTailwindcss,
+    SiTypescript,
+    SiJavascript,
+    SiNodedotjs,
+    SiExpress,
+    SiMongodb,
+    SiPython,
+    SiOpenai,
+    SiGit,
+    SiGithub,
+} from "react-icons/si";
 
 const techStack = [
-    { name: "JavaScript", icon: <FileJson className="w-8 h-8 md:w-10 md:h-10 text-yellow-500" /> },
-    { name: "TypeScript", icon: <FileType className="w-8 h-8 md:w-10 md:h-10 text-blue-500" /> },
-    { name: "React", icon: <Atom className="w-8 h-8 md:w-10 md:h-10 text-cyan-500" /> },
-    { name: "Next.js", icon: <Cpu className="w-8 h-8 md:w-10 md:h-10 text-black" /> },
-    { name: "Node.js", icon: <Server className="w-8 h-8 md:w-10 md:h-10 text-green-600" /> },
-    { name: "Express", icon: <Server className="w-8 h-8 md:w-10 md:h-10 text-gray-500" /> },
-    { name: "MongoDB", icon: <Database className="w-8 h-8 md:w-10 md:h-10 text-green-500" /> },
-    { name: "PostgreSQL", icon: <Database className="w-8 h-8 md:w-10 md:h-10 text-blue-400" /> },
-    { name: "Prisma", icon: <Triangle className="w-8 h-8 md:w-10 md:h-10 text-gray-700" /> },
-    { name: "Tailwind", icon: <Wind className="w-8 h-8 md:w-10 md:h-10 text-cyan-400" /> },
+    { name: "React", icon: SiReact, color: "#61DAFB" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "Express", icon: SiExpress, color: "#000000" },
+    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+    { name: "Python", icon: SiPython, color: "#3776AB" },
+    { name: "OpenAI", icon: SiOpenai, color: "#412991" },
+    { name: "Git", icon: SiGit, color: "#F05032" },
+    { name: "GitHub", icon: SiGithub, color: "#181717" },
 ];
 
-export function TechStack() {
+export const TechStack = () => {
     return (
-        <section className="py-20 bg-white">
-            <div className="w-full max-w-5xl mx-auto px-4 md:px-6">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Tech Stack</h2>
-                    <div className="w-20 h-1 bg-gray-200 mx-auto rounded-full"></div>
-                </div>
+        <section id="tech" className="w-full py-24">
+            <div className="max-w-4xl mx-auto px-6 text-center">
+                {/* Heading */}
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-2xl md:text-3xl font-medium text-black mb-4"
+                >
+                    Tech Stack
+                </motion.h2>
 
-                <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 grayscale hover:grayscale-0 transition-all duration-500">
-                    {techStack.map((tech, index) => (
-                        <motion.div
-                            key={tech.name}
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.05 }}
-                            className="flex flex-col items-center gap-2 group cursor-default"
-                        >
-                            <div className="p-4 rounded-2xl bg-gray-50 group-hover:bg-white group-hover:shadow-lg transition-all duration-300 border border-gray-100/50">
-                                {tech.icon}
-                            </div>
-                            {/* <span className="text-sm font-medium text-gray-500 group-hover:text-gray-900 transition-colors">{tech.name}</span> */}
-                        </motion.div>
-                    ))}
+                <motion.p
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                    className="text-gray-500 mb-12"
+                >
+                    Tools & technologies I use to build modern, scalable products
+                </motion.p>
+
+                {/* Grid */}
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                    {techStack.map((tech, i) => {
+                        const Icon = tech.icon;
+                        return (
+                            <motion.div
+                                key={tech.name}
+                                initial={{ opacity: 0, scale: 0.85 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.05 }}
+                                whileHover={{ y: -6 }}
+                                className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-white shadow-sm hover:shadow-md transition"
+                            >
+                                <Icon size={32} color={tech.color} />
+                                <span className="text-xs font-medium text-gray-600">
+                                    {tech.name}
+                                </span>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
     );
-}
+};

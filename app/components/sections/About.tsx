@@ -7,7 +7,7 @@ import { Download } from "lucide-react";
 
 export function About() {
     return (
-        <Section id="about" className="bg-white">
+        <Section id="about" className="bg-whitex">
             <div>
 
                 <motion.div
@@ -16,16 +16,16 @@ export function About() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <div className=" mb-12">
+                    <div className=" mb-6">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About Me</h2>
-                        <div className="w-20 h-1 bg-gray-200 mx-auto rounded-full"></div>
+                        <div className="w-20 h-1 bg-gray-200  rounded-full"></div>
                     </div>
 
-                    <p className="text-gray-600 mb-6 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed">
                         I'm a final year Computer Science student at Brainware University, specializing in AI and Machine Learning.
                         My journey bridges the gap between sophisticated frontend engineering and powerful AI integrations.
-                    </p>
-                    <p className="text-gray-600 mb-8 leading-relaxed">
+
+
                         With experience at Gameonix and Cognifyz, I've honed my skills in Next.js, TypeScript, and scalable architecture.
                         I believe in software that feels natural, intuitive, and premium.
                     </p>
